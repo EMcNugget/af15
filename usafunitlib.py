@@ -54,7 +54,7 @@ def c2main():
             else: 
                 return f"{uid} {ui.gt['asog']}"
 
-    userInput = input("Select your wing under the 15th Air Force")  # 15th AF Wing Selection
+    userInput = input("Select your wing under the 15th Air Force. Or type 'base' to see the 15th Air Forces units organized via base")  # 15th AF Wing Selection
     if userInput == ui.af15w["fw1"]:
         wingdata = ui.af15w["fw1"]
         x = "1st"
@@ -132,8 +132,7 @@ def c2main():
                 if userInput == "yes":
                     return fw4g()
                 else:
-                    logging.warning("Invalid")
-                    logging.info("Valid input is 'back'")
+                    logging.warning("Invalid, a valid input is 'back")
             elif userInput == ' '.join([x, ui.gt['msg']]):
                 logging.info(f"The subordinate squadrons of the {userInput} are the {x} {ui.st['ces']}, {x} {ui.st['cs']}, {x} {ui.st['cts']}, {x} {ui.st['fss']}, {x} {ui.st['lrs']}, and the {x} {ui.st['sfs']}")
                 userInput = input("would you like to return?")
