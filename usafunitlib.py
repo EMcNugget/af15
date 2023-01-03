@@ -3,20 +3,14 @@ import logging # For logging
 
 logging.basicConfig(filename="unitliblog.txt", level=logging.DEBUG, filemode="w") # Logging
 
-logging.debug("Detailed log...")
-logging.info("All files working")
-logging.warning("This script may not work as inteneded")
-logging.error("This script encountered an error")
-logging.critical("Major malfunction, the program has crashed")
-
 def c2main():
     class group: # Group Methods
         @staticmethod
         def opGroup(uid):
             if uid == x:
-                return f"{x} {ui.gt['op']}"
+                return f"{x} {ui.gt['og']}"
             else: 
-                return f"{uid} {ui.gt['op']}"
+                return f"{uid} {ui.gt['og']}"
         @staticmethod
         def mgGroup(uid):
             if uid == x:
@@ -234,16 +228,16 @@ def c2main():
                     return w23g()
                 else:
                     print("Invalid")
-            elif userInput == ' '.join('347th', ui.gt['rg']):
+            elif userInput == ' '.join(['347th', ui.gt['rg']]):
                 print(f"The subordinate squadrons of the {userInput} are the 347th {ui.st['oss']}, and the 38th, 41st, and 71st {ui.st['rs']}s")
                 userInput = input("would you like to return?")               
                 if userInput == "yes":
                     return w23g()
                 else:
                     print("Invalid")
-        elif userInput == "back":
+            elif userInput == "back":
                 return c2main()
-        else:
+            else:
                 print(f"No group under that title exist under the {ui.af15w['w23']}")
                 return w23g()
 

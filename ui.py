@@ -48,7 +48,7 @@ st = dict(                                  # Various terms for squadrons under 
     acns = "Air Control Networks Squadron",
     acs = "Air Control Squadron",
     uavas = "Attack Squadron",
-    rs = "Reconnaissance Squadron",
+    res = "Reconnaissance Squadron",
 )
 
 gt = dict(                           # Various group terms under a wing
