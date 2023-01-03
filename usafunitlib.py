@@ -1,4 +1,13 @@
-import ui
+import ui # For wing, group, and squadron global data
+import logging # For logging
+
+logging.basicConfig(filename="unitliblog.txt", level=logging.DEBUG, filemode="w") # Logging
+
+logging.debug("Detailed log...")
+logging.info("All files working")
+logging.warning("This script may not work as inteneded")
+logging.error("This script encountered an error")
+logging.critical("Major malfunction, the program has crashed")
 
 def c2main():
     class group: # Group Methods
