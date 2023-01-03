@@ -30,7 +30,6 @@ def c2main():
     if userInput == ui.af15w["fw1"]:
         wingdata = ui.af15w["fw1"]
         x = "1st"
-        myfunc = fw1g()
     elif userInput == ui.af15w["fw4"]:
         wingdata = ui.af15w["fw4"]
         x = "4th"
@@ -71,24 +70,26 @@ def c2main():
         print("No wing under the 15th Air Force exists under that title.")
         return c2main()     
 
-    def return_():
-        y = "yes"
-        z = "Yes"
-        if userInput == y or z:
-            return myfunc
-
     def fw1g():
         if wingdata == ui.af15w["fw1"]:
+            y = "yes"
+            z = "Yes"
             print(f"The subordinate groups of the {wingdata} are the {group.opGroup()} and the {group.mgGroup()}")
             userInput = input(f"Select a group under the {wingdata}")
             if userInput == ' '.join([x, ui.gt['og']]):
                 print(f"The subordinate squadrons of the {x} {ui.gt['og']} are the {x} {ui.st['oss']}, 27th {ui.st['fs']}, 94th {ui.st['fs']}, 7th {ui.st['fts']}, and the 71st {ui.st['fts']}.")
-                if userInput == input("would you like to return?"):
-                    return_()
+                userInput = input("would you like to return?")
+                if userInput == y or z:
+                    return fw1g()
+                else:
+                    print("Invalid")
             elif userInput == ' '.join([x,ui.gt['mg']]):
                 print(f"The subordinate squadrons of the {x} {ui.gt['mg']} are the {x} {ui.st['mt']} and the {x} {ui.st['mu']}.")
-                if userInput == input("would you like to return?"):
-                    return_()
+                userInput = input("would you like to return?")
+                if userInput == y or z:
+                    return fw1g()
+                else:
+                    print("Invalid")
             else:
                 print(f"No group under that title exist under the {ui.af15w['fw1']}.")
                 return fw1g()

@@ -59,4 +59,3 @@ gt = dict(                           # Various group terms under a wing
     bds = "Base-Defense Group",
     asog = "Air Support Operations Group"
 )
-
