@@ -1,7 +1,7 @@
 import ui # For wing, group, and squadron global data
 import logging # For logging
 
-logging.basicConfig(level=logging.DEBUG, handlers=[logging.FileHandler("unitliblog.txt"),logging.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # Logging
+logging.basicConfig(level=logging.DEBUG, handlers=[logging.FileHandler("unitliblog.txt"), logging.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # Logging
 
 def c2main():
     class group: # Group Methods
