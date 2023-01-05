@@ -95,24 +95,6 @@ def c2main():
     elif userInput == ui.af15w["abw633"]:
         wingdata = ui.af15w["abw633"]
         wt = wdb.db633.term
-    elif userInput == ui.ba['ff']: # Langley
-        lg.info(f"{wdb.ub(userInput)} {ui.af15w['fw1']} and the {ui.af15w['abw633']}")
-        userInput = input(wdb.bu(userInput))
-        if userInput == ui.af15w['fw1']:
-            wingdata = ui.af15w['fw1']
-            wt = wdb.db1.term
-        elif userInput == ui.af15w['abw633']:
-            wingdata = ui.af15w['abw633']
-            wt = wdb.db633.term
-        else: 
-            lg.warn(wdb.y)
-    elif userInput == ui.ba['sj']: # Seymour Johnson
-        lg.info(f"{wdb.ub(userInput)} {ui.af15w['fw4']}")
-        if userInput == ui.af15w['fw4']:
-            wingdata = ui.af15w['fw4']
-            wt = wdb.db4.term
-        else:
-            lg.warn(wdb.y)
     else: 
         lg.info("No wing or base under the 15th Air Force exists under that title")
         return c2main()     
@@ -120,7 +102,7 @@ def c2main():
     def fw1g(): # 1st Fighter Wing Units
         if wingdata == ui.af15w["fw1"]:
             lg.info(f"{wdb.cg(wingdata)} {group.opGroup('1st')} and the {group.mgGroup('1st')}")
-            userInput = input(f"Select a group under the {wingdata}")
+            userInput = input(wdb.gs(wingdata))
             if userInput == ' '.join([wt, ui.gt['og']]):
                 lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, 27th {ui.st['fs']}, 94th {ui.st['fs']}, 7th {ui.st['fts']}, and the 71st {ui.st['fts']}")
                 userInput = input(wdb.x)
@@ -138,20 +120,20 @@ def c2main():
             elif userInput == wdb.z:
                 return c2main()
             else:
-                lg.info(f"No group under that title exist under the {ui.af15w['fw1']}")
+                lg.info(wdb.ng(ui.af15w['fw1']))
                 return fw1g()
     
     def fw4g(): # 4th Fighter Wing Units
         if wingdata == ui.af15w["fw4"]:
             lg.info(f"{wdb.cg(wingdata)} {group.opGroup('4th')}, {group.msgGroup('4th')}, {group.megGroup('4th')}, and the {group.mgGroup('4th')}")
-            userInput = input(f"Select a group under the {wingdata}")
+            userInput = input(wdb.gs(wingdata))
             if userInput == ' '.join([wt, ui.gt['og']]):
                 lg.info(f"{wdb.cs(wingdata)} {wt} {ui.st['oss']}, 333d, 334th, 335th, 336th {ui.st['fs']}s and the {wt} {ui.st['ts']}")
                 userInput = input(wdb.x)
                 if userInput == wdb.a:
                     return fw4g()
                 else:
-                    lg.warning("Invalid, a valid input is 'back")
+                    lg.warning(wdb.y)
             elif userInput == ' '.join([wt, ui.gt['msg']]):
                 lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['cts']}, {wt} {ui.st['fss']}, {wt} {ui.st['lrs']}, and the {wt} {ui.st['sfs']}")
                 userInput = input(wdb.x)
@@ -176,12 +158,12 @@ def c2main():
             elif userInput == wdb.z:
                 return c2main()
             else:
-                lg.info(f"No group under that title exist under the {ui.af15w['fw4']}")
+                lg.info(wdb.ng(ui.af15w['fw4']))
                 return fw4g()
     def fw20g():    # 20th Fighter Wing Units
         if wingdata == ui.af15w["fw20"]:
             lg.info(f"{wdb.cg(wingdata)} {group.opGroup('20th')}, {group.msgGroup('20th')}, {group.megGroup('20th')}, and the {group.mgGroup('20th')}")
-            userInput = input(f"Select a group under the {wingdata}")
+            userInput = input(wdb.gs(wingdata))
             if userInput == ' '.join([wt, ui.gt['og']]):
                 lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, and the 55th, 77th, 79th, {ui.st['fs']}s")
                 userInput = input(wdb.x)
@@ -213,12 +195,12 @@ def c2main():
             elif userInput == wdb.z:
                 return c2main()
             else:
-                lg.info(f"No group under that title exist under the {ui.af15w['fw20']}")
+                lg.info(wdb.ng(ui.af15w['fw20']))
                 return fw20g()
     def w23g(): #23d Wing Units
         if wingdata == ui.af15w["w23"]:
             lg.info(f"{wdb.cg(wingdata)} {group.fgGroup('23d')}, {group.msgGroup('23d')}, {group.megGroup('23d')}, {group.mgGroup('23d')}, and the {group.rgGroup('347th')}")
-            userInput = input(f"Select a group under the {wingdata}")
+            userInput = input(wdb.gs(wingdata))
             if userInput == ' '.join([wt, ui.gt['fg']]):
                 lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, 74th, 75th {ui.st['fs']}s")
                 userInput = input(wdb.x)
@@ -257,7 +239,7 @@ def c2main():
             elif userInput == wdb.z:
                 return c2main()
             else:
-                lg.info(f"No group under that title exist under the {ui.af15w['w23']}")
+                lg.info(wdb.ng(ui.af15w['w23']))
                 return w23g()
     w23g()
     fw20g()

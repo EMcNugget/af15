@@ -5,7 +5,7 @@ lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.St
 
 # Main script common variables
 x = "Would you like to return?"
-y = "Invalid"
+y = "Invalid, a valid input is 'back"
 z = "back"
 a = "yes"
 
@@ -18,7 +18,10 @@ def bu(bInput):
     return(f"Would you like to see the subordinate units of the wings based at {bInput}? Select your unit to continue, back to return")
 def ub(ubInput):
     return (f"The units based at {ubInput} are the")
-
+def gs(gsInput):
+    return (f"Select a group under the {gsInput}")
+def ng(ngInput):
+    return (f"No group under that title exist under the {ngInput}")
 class fwdb:
     def __init__(self, term, img, desc, base): # Wing Misc Data Structure
         self.term = term
