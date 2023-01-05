@@ -1,5 +1,5 @@
 af = dict( # Reserved for future expansion
-
+    
 )
 
 af15w = dict(             # Wings of the 15th Air Force
@@ -49,6 +49,7 @@ st = dict(                                  # Various terms for squadrons under 
     acs = "Air Control Squadron",
     uavas = "Attack Squadron",
     res = "Reconnaissance Squadron",
+    mof = "Maintenance Operations Flight",
 )
 
 gt = dict(                           # Various group terms under a wing
@@ -60,4 +61,18 @@ gt = dict(                           # Various group terms under a wing
     rg = "Rescue Group",
     bds = "Base-Defense Group",
     asog = "Air Support Operations Group"
+)
+
+ba = dict(
+    ff = "Langley Air Force Base",
+    sj = "Seymour Johnson Air Force Base",
+    sw = "Shaw Air Force Base",
+    mt = "Moody Air Force Base",
+    ty = "Tyndall Air Force Base",
+    dm = "Davis-Monthan Air Force Base",
+    mo = "Mountain Home Air Force Base",
+    hl = "Hill Air Force Base",
+    wa = "Creech Air Force Base",
+    ga = "Robins Air Force Base",
+    ok = "Tinker Air Force Base",
 )
