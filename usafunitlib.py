@@ -55,45 +55,32 @@ def c2main():
             else: 
                 return f"{uid} {ui.gt['asog']}"
 
-    userInput = input("Select your wing under the 15th Air Force. Or type 'base' to see the 15th Air Forces units organized via base")  # 15th AF Wing Selection
-    if userInput == ui.af15w["fw1"]:
-        wingdata = ui.af15w["fw1"]
+    wingdata = input("Select your wing under the 15th Air Force. Or type 'base' to see the 15th Air Forces units organized via base")  # 15th AF Wing Selection
+    if wingdata == ui.af15w["fw1"]:
         wt = wdb.db1.term
-    elif userInput == ui.af15w["fw4"]:
-        wingdata = ui.af15w["fw4"]
+    elif wingdata == ui.af15w["fw4"]:
         wt = wdb.db4.term
-    elif userInput == ui.af15w["fw20"]:
-        wingdata = ui.af15w["fw20"]
+    elif wingdata == ui.af15w["fw20"]:
         wt = wdb.db20.term
-    elif userInput == ui.af15w["w23"]:
-        wingdata = ui.af15w["w23"]
+    elif wingdata == ui.af15w["w23"]:
         wt = wdb.db23.term
-    elif userInput == ui.af15w["agow93"]:
-        wingdata = ui.af15w["agow93"]
+    elif wingdata == ui.af15w["agow93"]:
         wt = wdb.db93.term
-    elif userInput == ui.af15w["fw325"]:
-        wingdata = ui.af15w["fw325"]
+    elif wingdata == ui.af15w["fw325"]:
         wt = wdb.db325.term
-    elif userInput == ui.af15w["fw366"]:
-        wingdata = ui.af15w["fw366"]
+    elif wingdata == ui.af15w["fw366"]:
         wt = wdb.db366.term
-    elif userInput == ui.af15w["fw388"]:
-        wingdata = ui.af15w["fw388"]
+    elif wingdata == ui.af15w["fw388"]:
         wt = wdb.db388.term
-    elif userInput == ui.af15w["w432"]:
-        wingdata = ui.af15w["w432"]
+    elif wingdata == ui.af15w["w432"]:
         wt = wdb.db432.term
-    elif userInput == ui.af15w["acw461"]:
-        wingdata = ui.af15w["acw461"]
+    elif wingdata == ui.af15w["acw461"]:
         wt = wdb.db461.term
-    elif userInput == ui.af15w["fg495"]:
-        wingdata = ui.af15w["fg495"]
+    elif wingdata == ui.af15w["fg495"]:
         wt = wdb.db495.term
-    elif userInput == ui.af15w["acw552"]:
-        wingdata = ui.af15w["acw552"]
+    elif wingdata == ui.af15w["acw552"]:
         wt = wdb.db552.term
-    elif userInput == ui.af15w["abw633"]:
-        wingdata = ui.af15w["abw633"]
+    elif wingdata == ui.af15w["abw633"]:
         wt = wdb.db633.term
     else: 
         lg.info("No wing or base under the 15th Air Force exists under that title")
