@@ -54,7 +54,15 @@ def c2main():
                 return f"{wt} {ui.gt['asog']}"
             else: 
                 return f"{uid} {ui.gt['asog']}"
-
+        @staticmethod # Base selection method
+        def bselect(base, term, unitid):
+            lg.info(f"{wdb.ub(base)} {unitid}")
+            UserInput = input(f"{wdb.bu(base)}")
+            if UserInput == wdb.a:
+                wingdata == unitid
+            else:
+                lg.warning(wdb.y)
+                
     wingdata = input("Select your wing under the 15th Air Force. Or type 'base' to see the 15th Air Forces units organized via base")  # 15th AF Wing Selection
     if wingdata == ui.af15w["fw1"]:
         wt = wdb.db1.term
