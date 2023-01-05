@@ -2,7 +2,7 @@ import unitterms as ui # For wing, group, and squadron global data
 import logging as lg # For logging
 import wingdb as wdb # Wind misc data
 
-lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] [%(funcName)%] %(message)s") # logging
+lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # logging
 
 def c2main():
     class group: # Group Methods
