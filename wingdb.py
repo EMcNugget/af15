@@ -1,14 +1,13 @@
 import unitterms as ui
 import logging as lg
 
-lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # logging
+lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] [%(funcName)%] %(message)s") # logging
 
 # Main script common variables
 x = "Would you like to return?"
-y = "Invalid, a valid input is 'back'"
+y = "Invalid"
 z = "back"
 a = "yes"
-ng = "No group under that title exist under the"
 
 # Main script common unit functions
 def cg(winginput):

@@ -2,7 +2,7 @@ import unitterms as ui # For wing, group, and squadron global data
 import logging as lg # For logging
 import wingdb as wdb # Wind misc data
 
-lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # logging
+lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] [%(funcName)%] %(message)s") # logging
 
 def c2main():
     class group: # Group Methods
@@ -113,13 +113,6 @@ def c2main():
             wt = wdb.db4.term
         else:
             lg.warn(wdb.y)
-    elif userInput == ui.ba['sw']:
-        lg.info(f"{wdb.ub(userInput)} {ui.af15w['fw20']}")
-        if userInput == ui.af15w['fw20']:
-            wingdata = ui.af15w['fw20']
-            wt= wdb.db20.term
-        else: 
-            lg.warn(wdb.y)
     else: 
         lg.info("No wing or base under the 15th Air Force exists under that title")
         return c2main()     
@@ -145,7 +138,7 @@ def c2main():
             elif userInput == wdb.z:
                 return c2main()
             else:
-                lg.info(f"{wdb.ng} {ui.af15w['fw1']}")
+                lg.info(f"No group under that title exist under the {ui.af15w['fw1']}")
                 return fw1g()
     
     def fw4g(): # 4th Fighter Wing Units
@@ -158,7 +151,7 @@ def c2main():
                 if userInput == wdb.a:
                     return fw4g()
                 else:
-                    lg.warning(wdb.y)
+                    lg.warning("Invalid, a valid input is 'back")
             elif userInput == ' '.join([wt, ui.gt['msg']]):
                 lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['cts']}, {wt} {ui.st['fss']}, {wt} {ui.st['lrs']}, and the {wt} {ui.st['sfs']}")
                 userInput = input(wdb.x)
@@ -183,7 +176,7 @@ def c2main():
             elif userInput == wdb.z:
                 return c2main()
             else:
-                lg.info(f"{wdb.ng} {ui.af15w['fw4']}")
+                lg.info(f"No group under that title exist under the {ui.af15w['fw4']}")
                 return fw4g()
     def fw20g():    # 20th Fighter Wing Units
         if wingdata == ui.af15w["fw20"]:
@@ -220,7 +213,7 @@ def c2main():
             elif userInput == wdb.z:
                 return c2main()
             else:
-                lg.info(f"{wdb.ng} {ui.af15w['fw20']}")
+                lg.info(f"No group under that title exist under the {ui.af15w['fw20']}")
                 return fw20g()
     def w23g(): #23d Wing Units
         if wingdata == ui.af15w["w23"]:
@@ -264,7 +257,7 @@ def c2main():
             elif userInput == wdb.z:
                 return c2main()
             else:
-                lg.info(f"{wdb.ng} {ui.af15w['w23']}")
+                lg.info(f"No group under that title exist under the {ui.af15w['w23']}")
                 return w23g()
     w23g()
     fw20g()
