@@ -1,7 +1,7 @@
 import unitterms as ui
 import logging as lg
 
-lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # logging
+lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] [%(funcName)%] %(message)s") # logging
 
 # Main script common variables
 x = "Would you like to return?"
