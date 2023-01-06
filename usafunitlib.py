@@ -54,24 +54,157 @@ def c2main():
                 return f"{wt} {ui.gt['asog']}"
             else: 
                 return f"{uid} {ui.gt['asog']}"
-        @staticmethod # Base selection method
-        def bselect(base, term, unitid):
-            lg.info(f"{wdb.ub(base)} {unitid}")
-            UserInput = input(f"{wdb.bu(base)}")
-            if UserInput == wdb.a:
-                wingdata == unitid
-            else:
-                lg.warning(wdb.y)
                 
     wingdata = input("Select your wing under the 15th Air Force. Or type 'base' to see the 15th Air Forces units organized via base")  # 15th AF Wing Selection
-    if wingdata == ui.af15w["fw1"]:
+    if wingdata == ui.af15w['fw1']:
         wt = wdb.db1.term
-    elif wingdata == ui.af15w["fw4"]:
+        def fw1g(x): # 1st Fighter Wing Units
+            lg.info(f"{wdb.cg(wingdata)} {group.opGroup(x)} and the {group.mgGroup(x)}")
+            userInput = input(wdb.gs(wingdata))
+            if userInput == ' '.join([wt, ui.gt['og']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, 27th {ui.st['fs']}, 94th {ui.st['fs']}, 7th {ui.st['fts']}, and the 71st {ui.st['fts']}")
+                userInput = input(wdb.x)
+                if userInput == wdb.a:
+                    return fw1g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt,ui.gt['mg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['mt']} and the {wt} {ui.st['mu']}")
+                userInput = input(wdb.x)
+                if userInput == wdb.a:
+                    return fw1g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == wdb.z:
+                    return c2main()
+            else:
+                lg.info(wdb.ng(wingdata))
+                return fw1g(wt)
+        fw1g(wt)
+    elif wingdata == ui.af15w['fw4']:
         wt = wdb.db4.term
-    elif wingdata == ui.af15w["fw20"]:
+        def fw4g(x): # 4th Fighter Wing Units
+            lg.info(f"{wdb.cg(wingdata)} {group.opGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, and the {group.mgGroup(x)}")
+            userInput = input(wdb.gs(wingdata))
+            if userInput == ' '.join([wt, ui.gt['og']]):
+                lg.info(f"{wdb.cs(wingdata)} {wt} {ui.st['oss']}, 333d, 334th, 335th, 336th {ui.st['fs']}s and the {wt} {ui.st['ts']}")
+                userInput = input(wdb.x)
+                if userInput == wdb.a:
+                    return fw4g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['msg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['cts']}, {wt} {ui.st['fss']}, {wt} {ui.st['lrs']}, and the {wt} {ui.st['sfs']}")
+                userInput = input(wdb.x)
+                if userInput == wdb.a:
+                    return fw4g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['meg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['hos']} and the {wt} {ui.st['omrs']}")
+                userInput = input(wdb.x)               
+                if userInput == wdb.a:
+                    return fw4g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['mg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['amxs']}, {wt} {ui.st['ems']}, {wt} {ui.st['cms']}, and the 333d, 334th, 335th, 336th {ui.st['fgs']}s ")
+                userInput = input(wdb.x)               
+                if userInput == wdb.a:
+                    return fw4g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == wdb.z:
+                return c2main()
+            else:
+                lg.info(wdb.ng(wingdata))
+                return fw4g(wt)
+        fw4g(wt)
+    elif wingdata == ui.af15w['fw20']:
         wt = wdb.db20.term
-    elif wingdata == ui.af15w["w23"]:
+        def fw20g(x):    # 20th Fighter Wing Units
+            lg.info(f"{wdb.cg(wingdata)} {group.opGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, and the {group.mgGroup(x)}")
+            userInput = input(wdb.gs(wingdata))
+            if userInput == ' '.join([wt, ui.gt['og']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, and the 55th, 77th, 79th, {ui.st['fs']}s")
+                userInput = input(wdb.x)
+                if userInput == wdb.a:
+                    return fw20g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['msg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['fss']}, {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['sfs']}, {wt} {ui.st['lrs']}, and the {wt} {ui.st['cts']}")
+                userInput = input(wdb.x)
+                if userInput == wdb.a:
+                    return fw20g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['meg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['hos']} and the {wt} {ui.st['omrs']}")
+                userInput = input(wdb.x)               
+                if userInput == wdb.a:
+                    return fw20g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['mg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['cms']} and the {wt} {ui.st['ems']}")
+                userInput = input(wdb.x)               
+                if userInput == wdb.a:
+                    return fw20g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == wdb.z:
+                return c2main()
+            else:
+                lg.info(wdb.ng(wingdata))
+                return fw20g(wt)
+        fw20g(wt)
+    elif wingdata == ui.af15w['w23']:
         wt = wdb.db23.term
+        def w23g(x): #23d Wing Units
+            lg.info(f"{wdb.cg(wingdata)} {group.fgGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, {group.mgGroup(x)}, and the {group.rgGroup('347th')}")
+            userInput = input(wdb.gs(wingdata))
+            if userInput == ' '.join([wt, ui.gt['fg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, 74th, 75th {ui.st['fs']}s")
+                userInput = input(wdb.x)
+                if userInput == wdb.a:
+                    return w23g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['msg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['cts']}, {wt} {ui.st['lrs']}, {wt} {ui.st['fss']}, and the {wt} {ui.st['sfs']}")
+                userInput = input(wdb.x)
+                if userInput == wdb.a:
+                    return w23g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['meg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['mss']}, {wt} {ui.st['hos']}, and the {wt} {ui.st['omrs']}")
+                userInput = input(wdb.x)               
+                if userInput == wdb.a:
+                    return w23g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join([wt, ui.gt['mg']]):
+                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['mof']}, {wt} {ui.st['mu']}, {wt} {ui.st['mt']}, 41st, 71st {ui.st['rgs']}, 74th, and 75th {ui.st['fgs']}")
+                userInput = input(wdb.x)               
+                if userInput == wdb.a:
+                    return w23g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == ' '.join(['347th', ui.gt['rg']]):
+                lg.info(f"{wdb.cs(userInput)} 347th {ui.st['oss']}, and the 38th, 41st, and 71st {ui.st['rs']}s")
+                userInput = input(wdb.x)               
+                if userInput == wdb.a:
+                    return w23g(wt)
+                else:
+                    lg.warning(wdb.y)
+            elif userInput == wdb.z:
+                return c2main()
+            else:
+                lg.info(wdb.ng(wingdata))
+                return w23g(wt)
+        w23g(wt)
     elif wingdata == ui.af15w["agow93"]:
         wt = wdb.db93.term
     elif wingdata == ui.af15w["fw325"]:
@@ -92,152 +225,5 @@ def c2main():
         wt = wdb.db633.term
     else: 
         lg.info("No wing or base under the 15th Air Force exists under that title")
-        return c2main()     
-
-    def fw1g(): # 1st Fighter Wing Units
-        if wingdata == ui.af15w["fw1"]:
-            lg.info(f"{wdb.cg(wingdata)} {group.opGroup('1st')} and the {group.mgGroup('1st')}")
-            userInput = input(wdb.gs(wingdata))
-            if userInput == ' '.join([wt, ui.gt['og']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, 27th {ui.st['fs']}, 94th {ui.st['fs']}, 7th {ui.st['fts']}, and the 71st {ui.st['fts']}")
-                userInput = input(wdb.x)
-                if userInput == wdb.a:
-                    return fw1g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt,ui.gt['mg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['mt']} and the {wt} {ui.st['mu']}")
-                userInput = input(wdb.x)
-                if userInput == wdb.a:
-                    return fw1g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == wdb.z:
-                return c2main()
-            else:
-                lg.info(wdb.ng(ui.af15w['fw1']))
-                return fw1g()
-    
-    def fw4g(): # 4th Fighter Wing Units
-        if wingdata == ui.af15w["fw4"]:
-            lg.info(f"{wdb.cg(wingdata)} {group.opGroup('4th')}, {group.msgGroup('4th')}, {group.megGroup('4th')}, and the {group.mgGroup('4th')}")
-            userInput = input(wdb.gs(wingdata))
-            if userInput == ' '.join([wt, ui.gt['og']]):
-                lg.info(f"{wdb.cs(wingdata)} {wt} {ui.st['oss']}, 333d, 334th, 335th, 336th {ui.st['fs']}s and the {wt} {ui.st['ts']}")
-                userInput = input(wdb.x)
-                if userInput == wdb.a:
-                    return fw4g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['msg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['cts']}, {wt} {ui.st['fss']}, {wt} {ui.st['lrs']}, and the {wt} {ui.st['sfs']}")
-                userInput = input(wdb.x)
-                if userInput == wdb.a:
-                    return fw4g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['meg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['hos']} and the {wt} {ui.st['omrs']}")
-                userInput = input(wdb.x)               
-                if userInput == wdb.a:
-                    return fw4g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['mg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['amxs']}, {wt} {ui.st['ems']}, {wt} {ui.st['cms']}, and the 333d, 334th, 335th, 336th {ui.st['fgs']}s ")
-                userInput = input(wdb.x)               
-                if userInput == wdb.a:
-                    return fw4g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == wdb.z:
-                return c2main()
-            else:
-                lg.info(wdb.ng(ui.af15w['fw4']))
-                return fw4g()
-    def fw20g():    # 20th Fighter Wing Units
-        if wingdata == ui.af15w["fw20"]:
-            lg.info(f"{wdb.cg(wingdata)} {group.opGroup('20th')}, {group.msgGroup('20th')}, {group.megGroup('20th')}, and the {group.mgGroup('20th')}")
-            userInput = input(wdb.gs(wingdata))
-            if userInput == ' '.join([wt, ui.gt['og']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, and the 55th, 77th, 79th, {ui.st['fs']}s")
-                userInput = input(wdb.x)
-                if userInput == wdb.a:
-                    return fw20g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['msg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['fss']}, {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['sfs']}, {wt} {ui.st['lrs']}, and the {wt} {ui.st['cts']}")
-                userInput = input(wdb.x)
-                if userInput == wdb.a:
-                    return fw20g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['meg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['hos']} and the {wt} {ui.st['omrs']}")
-                userInput = input(wdb.x)               
-                if userInput == wdb.a:
-                    return fw20g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['mg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['cms']} and the {wt} {ui.st['ems']}")
-                userInput = input(wdb.x)               
-                if userInput == wdb.a:
-                    return fw20g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == wdb.z:
-                return c2main()
-            else:
-                lg.info(wdb.ng(ui.af15w['fw20']))
-                return fw20g()
-    def w23g(): #23d Wing Units
-        if wingdata == ui.af15w["w23"]:
-            lg.info(f"{wdb.cg(wingdata)} {group.fgGroup('23d')}, {group.msgGroup('23d')}, {group.megGroup('23d')}, {group.mgGroup('23d')}, and the {group.rgGroup('347th')}")
-            userInput = input(wdb.gs(wingdata))
-            if userInput == ' '.join([wt, ui.gt['fg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, 74th, 75th {ui.st['fs']}s")
-                userInput = input(wdb.x)
-                if userInput == wdb.a:
-                    return w23g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['msg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['cts']}, {wt} {ui.st['lrs']}, {wt} {ui.st['fss']}, and the {wt} {ui.st['sfs']}")
-                userInput = input(wdb.x)
-                if userInput == wdb.a:
-                    return w23g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['meg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['mss']}, {wt} {ui.st['hos']}, and the {wt} {ui.st['omrs']}")
-                userInput = input(wdb.x)               
-                if userInput == wdb.a:
-                    return w23g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join([wt, ui.gt['mg']]):
-                lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['mof']}, {wt} {ui.st['mu']}, {wt} {ui.st['mt']}, 41st, 71st {ui.st['rgs']}, 74th, and 75th {ui.st['fgs']}")
-                userInput = input(wdb.x)               
-                if userInput == wdb.a:
-                    return w23g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == ' '.join(['347th', ui.gt['rg']]):
-                lg.info(f"{wdb.cs(userInput)} 347th {ui.st['oss']}, and the 38th, 41st, and 71st {ui.st['rs']}s")
-                userInput = input(wdb.x)               
-                if userInput == wdb.a:
-                    return w23g()
-                else:
-                    lg.warning(wdb.y)
-            elif userInput == wdb.z:
-                return c2main()
-            else:
-                lg.info(wdb.ng(ui.af15w['w23']))
-                return w23g()
-    w23g()
-    fw20g()
-    fw4g()            
-    fw1g()
+        return c2main() 
 c2main()
