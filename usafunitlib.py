@@ -5,6 +5,7 @@ import customtkinter # For GUI
 import tkinter # GUI dependency 
 from PIL import Image # Image importing
 import os 
+import json
 
 lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # logging
 
@@ -44,13 +45,8 @@ class App(customtkinter.CTk): # GUI Framework
         self.wing_1st_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "1stFW_display.jpg")), size=(2018, 1614))
         
         # Description
-        desc_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets\\txt_assets\\")
         self.textbox = customtkinter.CTkTextbox(self)
         self.textbox.grid(row=0, column=1, rowspan=4, padx=(20, 0), pady=(20, 0), sticky="nsew") 
-        self.fw1desc = open(os.path.join(desc_path, "1stFWDesc.txt")).read()
-        self.og1desc = open(os.path.join(desc_path, "1stOGDesc.txt")).read()
-        self.oss1desc = open(os.path.join(desc_path, "1stOSSDesc.txt")).read()
-      #  self.textbox.configure(state="disabled")
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
             customtkinter.set_appearance_mode(new_appearance_mode)
@@ -116,7 +112,7 @@ class App(customtkinter.CTk): # GUI Framework
                 
         if wdata == ui.af15w['fw1']: #1st Fighter Wing
             wt = wdb.db1.term
-            app.textbox.insert("0.0", app.fw1desc)
+            app.textbox.insert("0.0", ui.fw1d['wing'])
             def fw1g(x): # 1st Fighter Wing Units
                 lg.info(f"{wdb.cg(wdata)} {group.opGroup(x)} and the {group.mgGroup(x)}")
                 optionmenu_var1 = customtkinter.StringVar(value="Select a Group")
@@ -124,18 +120,28 @@ class App(customtkinter.CTk): # GUI Framework
                 def fw1gui(wdata):
                     if wdata == ' '.join([wt, ui.gt['og']]):
                         app.textbox.delete('1.0', "end")
-                        app.textbox.insert("0.0", app.og1desc)
+                        app.textbox.insert("0.0", ui.fw1d['opgroup'])
                         lg.info(f"{wdb.cs(wdata)} {wt} {ui.st['oss']}, 27th {ui.st['fs']}, 94th {ui.st['fs']}, 7th {ui.st['fts']}, and the 71st {ui.st['fts']}")
                         def og1sq(wdata):
                             if wdata == f"{wt} {ui.st['oss']}":
                                 app.textbox.delete('1.0', "end")
-                                app.textbox.insert("0.0", app.oss1desc)
                             elif wdata == 'Return':
                                 app.textbox.delete('1.0', "end")
                                 return fw1g(x)
                         app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['oss']}", f"27th {ui.st['fs']}", f"94th {ui.st['fs']}", f"7th {ui.st['fts']}", f"71st {ui.st['fts']}", 'Return'], variable=optionmenu_var2, command=og1sq)
                     elif wdata == ' '.join([wt,ui.gt['mg']]):
+                        app.textbox.delete('1.0', "end")
+                        app.textbox.insert("0.0", ui.fw1d['maintgroup'])
                         lg.info(f"{wdb.cs(wdata)} {wt} {ui.st['mt']} and the {wt} {ui.st['mu']}")
+                        def mg1sq(wdata):
+                            if wdata == f"{wt} {ui.st['mt']}":
+                                app.textbox.delete('1.0', "end")
+                            elif wdata == f"{wt} {ui.st['mu']}":
+                                app.textbox.delete('1.0', "end")
+                            elif wdata == 'Return':
+                                app.textbox.delete('1.0', "end")
+                                return fw1g(x)
+                        app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['mt']}", f"{wt} {ui.st['mu']}", 'Return'], variable=optionmenu_var2, command=mg1sq)  
                     elif wdata == 'Return':
                         return app.back()
                     
