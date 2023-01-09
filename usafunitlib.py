@@ -1,14 +1,14 @@
 import unitterms as ui # For wing, group, and squadron global data
 import logging as lg # For logging
-import wingdb as wdb # Wind misc data
-import customtkinter
-import tkinter
-from PIL import Image
-import os
+import wingdb as wdb # Wing misc data
+import customtkinter # For GUI
+import tkinter # GUI dependency 
+from PIL import Image # Image importing
+import os 
 
 lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # logging
 
-class App(customtkinter.CTk):
+class App(customtkinter.CTk): # GUI Framework 
     def __init__(self):
         super().__init__()
 
@@ -62,6 +62,7 @@ class App(customtkinter.CTk):
                                                         variable=optionmenu_var)
         self.optionmenu.grid(row=3, column=0, padx=20, pady=(20, 10))
         self.textbox.delete('1.0', "end")
+
     def c2main(wdata):
         class group: # Group Methods
             @staticmethod
@@ -113,7 +114,7 @@ class App(customtkinter.CTk):
                 else: 
                     return f"{uid} {ui.gt['asog']}"
                 
-        if wdata == ui.af15w['fw1']:
+        if wdata == ui.af15w['fw1']: #1st Fighter Wing
             wt = wdb.db1.term
             app.textbox.insert("0.0", app.fw1desc)
             def fw1g(x): # 1st Fighter Wing Units
@@ -140,7 +141,7 @@ class App(customtkinter.CTk):
                     
                 app.optionmenu.configure(values=["Select a Group...", ' '.join([wt, ui.gt['og']]), ' '.join([wt,ui.gt['mg']]), 'Return'], variable=optionmenu_var1, command=fw1gui)
             fw1g(wt)
-        elif wdata == ui.af15w['fw4']:
+        elif wdata == ui.af15w['fw4']: # 4th Fighter Wing
             wt = wdb.db4.term
             def fw4g(x): # 4th Fighter Wing Units
                 lg.info(f"{wdb.cg(wdata)} {group.opGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, and the {group.mgGroup(x)}")
@@ -154,7 +155,7 @@ class App(customtkinter.CTk):
                 elif userInput == ' '.join([wt, ui.gt['mg']]):
                     lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['amxs']}, {wt} {ui.st['ems']}, {wt} {ui.st['cms']}, and the 333d, 334th, 335th, 336th {ui.st['fgs']}s ")
             fw4g(wt)
-        elif wdata == ui.af15w['fw20']:
+        elif wdata == ui.af15w['fw20']: # 20th Fighter Wing
             wt = wdb.db20.term
             def fw20g(x):    # 20th Fighter Wing Units
                 lg.info(f"{wdb.cg(wdata)} {group.opGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, and the {group.mgGroup(x)}")
@@ -168,7 +169,7 @@ class App(customtkinter.CTk):
                 elif userInput == ' '.join([wt, ui.gt['mg']]):
                     lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['cms']} and the {wt} {ui.st['ems']}")
             fw20g(wt)
-        elif wdata == ui.af15w['w23']:
+        elif wdata == ui.af15w['w23']: # 23d Wing
             wt = wdb.db23.term
             def w23g(x): #23d Wing Units
                 lg.info(f"{wdb.cg(wdata)} {group.fgGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, {group.mgGroup(x)}, and the {group.rgGroup('347th')}")
