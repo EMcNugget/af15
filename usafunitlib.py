@@ -47,7 +47,9 @@ class App(customtkinter.CTk):
         desc_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets\\txt_assets\\")
         self.textbox = customtkinter.CTkTextbox(self)
         self.textbox.grid(row=0, column=1, rowspan=4, padx=(20, 0), pady=(20, 0), sticky="nsew") 
-        self.fw1desc = open(os.path.join(desc_path, "1stFWDesc.txt"))
+        self.fw1desc = open(os.path.join(desc_path, "1stFWDesc.txt")).read()
+        self.og1desc = open(os.path.join(desc_path, "1stOGDesc.txt")).read()
+        self.oss1desc = open(os.path.join(desc_path, "1stOSSDesc.txt")).read()
       #  self.textbox.configure(state="disabled")
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
@@ -113,19 +115,29 @@ class App(customtkinter.CTk):
                 
         if wdata == ui.af15w['fw1']:
             wt = wdb.db1.term
-            app.textbox.insert("0.0", app.fw1desc.readlines(1))
+            app.textbox.insert("0.0", app.fw1desc)
             def fw1g(x): # 1st Fighter Wing Units
                 lg.info(f"{wdb.cg(wdata)} {group.opGroup(x)} and the {group.mgGroup(x)}")
                 optionmenu_var1 = customtkinter.StringVar(value="Select a Group")
+                optionmenu_var2 = customtkinter.StringVar(value="Select a Squadron")
                 def fw1gui(wdata):
                     if wdata == ' '.join([wt, ui.gt['og']]):
                         app.textbox.delete('1.0', "end")
-                        app.textbox.insert("1.0", app.fw1desc.readlines(2))
+                        app.textbox.insert("0.0", app.og1desc)
                         lg.info(f"{wdb.cs(wdata)} {wt} {ui.st['oss']}, 27th {ui.st['fs']}, 94th {ui.st['fs']}, 7th {ui.st['fts']}, and the 71st {ui.st['fts']}")
+                        def og1sq(wdata):
+                            if wdata == f"{wt} {ui.st['oss']}":
+                                app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", app.oss1desc)
+                            elif wdata == 'Return':
+                                app.textbox.delete('1.0', "end")
+                                return fw1g(x)
+                        app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['oss']}", f"27th {ui.st['fs']}", f"94th {ui.st['fs']}", f"7th {ui.st['fts']}", f"71st {ui.st['fts']}", 'Return'], variable=optionmenu_var2, command=og1sq)
                     elif wdata == ' '.join([wt,ui.gt['mg']]):
                         lg.info(f"{wdb.cs(wdata)} {wt} {ui.st['mt']} and the {wt} {ui.st['mu']}")
                     elif wdata == 'Return':
                         return app.back()
+                    
                 app.optionmenu.configure(values=["Select a Group...", ' '.join([wt, ui.gt['og']]), ' '.join([wt,ui.gt['mg']]), 'Return'], variable=optionmenu_var1, command=fw1gui)
             fw1g(wt)
         elif wdata == ui.af15w['fw4']:
