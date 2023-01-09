@@ -5,7 +5,6 @@ import customtkinter # For GUI
 import tkinter # GUI dependency 
 from PIL import Image # Image importing
 import os 
-import json
 
 lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # logging
 
@@ -19,7 +18,8 @@ class App(customtkinter.CTk): # GUI Framework
         
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
-        self.grid_columnconfigure((2, 3), weight=0)
+        self.grid_columnconfigure((2, 3), weight=1)
+        self.grid_columnconfigure((4), weight=0)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
         # sidebar with option menu
@@ -43,10 +43,14 @@ class App(customtkinter.CTk): # GUI Framework
         # Image structure // reserved for later dev
         image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets\\img_assets\\")
         self.wing_1st_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "1stFW_display.jpg")), size=(2018, 1614))
-        
+        self.image_frame = customtkinter.CTkFrame(self, width=200, height=240, corner_radius=10)
+        self.image_frame.grid(column=3, row=0, rowspan = 3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky="nsew")
+
         # Description
         self.textbox = customtkinter.CTkTextbox(self)
-        self.textbox.grid(row=0, column=1, rowspan=4, padx=(20, 0), pady=(20, 0), sticky="nsew") 
+        self.textbox.grid(row=0, column=1, columnspan=2, rowspan=4, padx=(20, 2.5), pady=(20, 20), sticky="nsew")
+        self.textbox2 = customtkinter.CTkTextbox(self)
+        self.textbox2.grid(row=3, rowspan=1, column=3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky="nsew")
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
             customtkinter.set_appearance_mode(new_appearance_mode)
@@ -125,6 +129,7 @@ class App(customtkinter.CTk): # GUI Framework
                         def og1sq(wdata):
                             if wdata == f"{wt} {ui.st['oss']}":
                                 app.textbox.delete('1.0', "end")
+                                lg.info("1st OSS Units displayed")
                             elif wdata == 'Return':
                                 app.textbox.delete('1.0', "end")
                                 return fw1g(x)
@@ -138,13 +143,17 @@ class App(customtkinter.CTk): # GUI Framework
                                 app.textbox.delete('1.0', "end")
                             elif wdata == f"{wt} {ui.st['mu']}":
                                 app.textbox.delete('1.0', "end")
+                            elif wdata == f"27th {ui.st['fgs']}":
+                                app.textbox.delete('1.0', "end")
+                            elif wdata == f"94th {ui.st['fgs']}":
+                                app.textbox.delete('1.0', "end")
                             elif wdata == 'Return':
                                 app.textbox.delete('1.0', "end")
                                 return fw1g(x)
-                        app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['mt']}", f"{wt} {ui.st['mu']}", 'Return'], variable=optionmenu_var2, command=mg1sq)  
+                        app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['mt']}", f"{wt} {ui.st['mu']}", f"27th {ui.st['fgs']}", f"94th {ui.st['fgs']}", 'Return'], variable=optionmenu_var2, command=mg1sq)  
                     elif wdata == 'Return':
+                        app.textbox.delete('1.0', "end")
                         return app.back()
-                    
                 app.optionmenu.configure(values=["Select a Group...", ' '.join([wt, ui.gt['og']]), ' '.join([wt,ui.gt['mg']]), 'Return'], variable=optionmenu_var1, command=fw1gui)
             fw1g(wt)
         elif wdata == ui.af15w['fw4']: # 4th Fighter Wing

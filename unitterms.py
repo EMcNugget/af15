@@ -80,10 +80,15 @@ ba = dict(
 fw1d = dict(
     wing = "The 1st Fighter Wing is responsible for one third of the Air Force's combat F-22 Raptors.  The wing's mission is to deliver F-22 air power worldwide on short notice to support Combatant Commander taskings.  In addition to operating and maintaining two F-22 Air Dominance squadrons, the wing also flies the T-38 as adversary air to increase training capability.  The maintainers of the 1st Fighter Wing set the standard for low observable and aircraft maintenance, both of which establish the unit as the most capable and combat ready F-22 wing in the Air Force.  The wing's 1,700 Airmen manage two airfields, more than 12,000 flying hours each year, and equipment and aircraft worth over $7 billion.  The 1st Fighter Wing leads the way in combat capability and lethality in current operations worldwide, and serves as America's premier Air Dominance wing, led by next generation Airmen, integrated with its mission partners, and ready to fly, fight, and win...anytime, anyplace.",
     opgroup = "The 1st Operations Group directs the training and employment of two F-22 air dominance squadrons and an operations support squadron. The group's flying squadrons maintain the F-22 air superiority fighter aircraft.",
-    maintgroup = "The 1st Maintenance Group's mission is to rapidly deploy and employ 46 combat-ready F-22 Raptor aircraft worth $6.7 billion, teamed with the 1st Operations Group to comprise Air Combat Command's most historic air combat units -- America’s First Team: the 1st Fighter Wing.",
+    maintgroup = "The 1st Maintenance Group's mission is to rapidly deploy and employ 46 combat-ready F-22 Raptor aircraft worth $6.7 billion, teamed with the 1st Operations Group to comprise Air Combat Command's most historic air combat units -- America's First Team: the 1st Fighter Wing.",
     medgroup = None,
     msggroup = None,
     regroup = None,
+    oss1 = "The 1 OSS is responsible for all facets of airfield operations, or ops, air traffic control, weather, aircrew life support and training, intelligence analysis and support, weapons and tactics training, 1 FW battle staff operations, airspace scheduling, range ops and wing flying hour program for two fighter squadrons.",
+    fs27 = "The 27 FS is the oldest fighter squadron in the Air Force. As one of three fighter squadrons of the 1 FW, the 27 FS is tasked to provide air superiority for United States or allied forces by engaging and destroying enemy forces, equipment, defenses or installations for global deployment. The unit is equipped with the F-22 Raptor, the new air-dominance fighter.",
+    fs94 = "The 94 FS is the second oldest fighter squadron in America's history. The 94 FS is tasked to provide air superiority for the United States or allied forces by engaging and destroying enemy forces, equipment, defenses or installations for global deployment as part of the 1 FW.",
+    fts71 = "The 71st Fighter Training Squadron, Ironmen, is one of three flying squadrons assigned to the 1st Fighter Wing, Joint Base Langley-Eustis, Virginia. The squadron's mission is to provide professional adversary air support to enhance the 1st Fighter Wing's F-22 combat capability.",
+    ts7 = "No description available",
 )			
 
 fw4d = dict(
