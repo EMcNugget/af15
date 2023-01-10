@@ -3,10 +3,10 @@ import logging as lg # For logging
 import wingdb as wdb # Wing misc data
 import customtkinter # For GUI
 import tkinter # GUI dependency 
-from PIL import Image # Image importing
+from PIL import Image, ImageTk # Image importing
 import os 
 
-lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt"), lg.StreamHandler()], format="%(asctime)s [%(levelname)s] %(message)s") # logging
+lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt")], format="%(asctime)s [%(levelname)s] %(message)s") # logging
 
 class App(customtkinter.CTk): # GUI Framework 
     def __init__(self):
@@ -33,23 +33,25 @@ class App(customtkinter.CTk): # GUI Framework
         self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"],
                                                                        command=self.change_appearance_mode_event)
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 10))
+        self.appearance_mode_optionemenu.set("Dark")
         optionmenu_var = customtkinter.StringVar(value="Select a Wing...")
         self.optionmenu = customtkinter.CTkOptionMenu(self.sidebar_frame, dynamic_resizing=False,
                                                         values=["Select a Wing...", f"{ui.af15w['fw1']}", f"{ui.af15w['fw4']}", f"{ui.af15w['fw20']}", f"{ui.af15w['w23']}"], 
                                                         command=App.c2main,
                                                         variable=optionmenu_var)
         self.optionmenu.grid(row=3, column=0, padx=20, pady=(20, 10))
-        
-        # Image structure // reserved for later dev
-        image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets\\img_assets\\")
-        self.wing_1st_image = customtkinter.CTkImage(Image.open(os.path.join(image_path, "1stFW_display.jpg")), size=(2018, 1614))
-        self.image_frame = customtkinter.CTkFrame(self, width=200, height=240, corner_radius=10)
-        self.image_frame.grid(column=3, row=0, rowspan = 3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky="nsew")
 
+        # Image structure // reserved for later dev
+        self.image_frame = customtkinter.CTkFrame(self, width=200, height=240, corner_radius=10)
+        self.image_frame.grid(column=3, row=0, rowspan = 3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky='nsew')
+        self.image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets\\img_assets\\")
+        self.wing_1st_image = customtkinter.CTkImage(Image.open(os.path.join(self.image_path, "1stFW_display.png")).resize((200, 240),Image.Resampling.BILINEAR))
+        self.image_display = customtkinter.CTkLabel(master=self.image_frame, image=self.wing_1st_image, text="", fg_color=None, compound='center')
+        self.image_display.grid(column=3, row=0, rowspan = 3, columnspan=1)
         # Description
         self.textbox = customtkinter.CTkTextbox(self)
         self.textbox.grid(row=0, column=1, columnspan=2, rowspan=4, padx=(20, 2.5), pady=(20, 20), sticky="nsew")
-        self.textbox2 = customtkinter.CTkTextbox(self)
+        self.textbox2 = customtkinter.CTkTextbox(self, corner_radius=10)
         self.textbox2.grid(row=3, rowspan=1, column=3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky="nsew")
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
@@ -62,6 +64,10 @@ class App(customtkinter.CTk): # GUI Framework
                                                         variable=optionmenu_var)
         self.optionmenu.grid(row=3, column=0, padx=20, pady=(20, 10))
         self.textbox.delete('1.0', "end")
+
+    def change_scaling_event(self, new_scaling: str):
+        new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        customtkinter.set_widget_scaling(new_scaling_float)
 
     def c2main(wdata):
         class group: # Group Methods
@@ -124,35 +130,63 @@ class App(customtkinter.CTk): # GUI Framework
                 def fw1gui(wdata):
                     if wdata == ' '.join([wt, ui.gt['og']]):
                         app.textbox.delete('1.0', "end")
-                        app.textbox.insert("0.0", ui.fw1d['opgroup'])
-                        lg.info(f"{wdb.cs(wdata)} {wt} {ui.st['oss']}, 27th {ui.st['fs']}, 94th {ui.st['fs']}, 7th {ui.st['fts']}, and the 71st {ui.st['fts']}")
+                        app.textbox.insert("0.0", ui.fw1d['opgroup']['opsg'])
+                        lg.info("1stOpGroup options and assets displayed")
                         def og1sq(wdata):
                             if wdata == f"{wt} {ui.st['oss']}":
                                 app.textbox.delete('1.0', "end")
-                                lg.info("1st OSS Units displayed")
+                                app.textbox.insert("0.0", ui.fw1d['opgroup']['oss1'])
+                                lg.info("1st OSS displayed")
+                            elif wdata == f"27th {ui.st['fs']}":
+                                app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", ui.fw1d['opgroup']['fs27'])
+                                lg.info("27th FS displayed")
+                            elif wdata == f"94th {ui.st['fs']}":
+                                app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", ui.fw1d['opgroup']['fs94'])
+                                lg.info("94th FS displayed")
+                            elif wdata == f"7th {ui.st['ts']}":
+                                app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", ui.fw1d['opgroup']['ts7'])
+                                lg.info("7th TS displayed")
+                            elif wdata == f"71st {ui.st['fts']}":
+                                app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", ui.fw1d['opgroup']['fts71'])
+                                lg.info("71st FTS displayed")
                             elif wdata == 'Return':
                                 app.textbox.delete('1.0', "end")
+                                lg.info("Returning")
                                 return fw1g(x)
-                        app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['oss']}", f"27th {ui.st['fs']}", f"94th {ui.st['fs']}", f"7th {ui.st['fts']}", f"71st {ui.st['fts']}", 'Return'], variable=optionmenu_var2, command=og1sq)
+                        app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['oss']}", f"27th {ui.st['fs']}", f"94th {ui.st['fs']}", f"7th {ui.st['ts']}", f"71st {ui.st['fts']}", 'Return'], variable=optionmenu_var2, command=og1sq)
                     elif wdata == ' '.join([wt,ui.gt['mg']]):
                         app.textbox.delete('1.0', "end")
-                        app.textbox.insert("0.0", ui.fw1d['maintgroup'])
-                        lg.info(f"{wdb.cs(wdata)} {wt} {ui.st['mt']} and the {wt} {ui.st['mu']}")
+                        app.textbox.insert("0.0", ui.fw1d['maintgroup']['maintg'])
+                        lg.info("1stMaintGroup units and assets displayed")
                         def mg1sq(wdata):
                             if wdata == f"{wt} {ui.st['mt']}":
                                 app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", ui.fw1d['maintgroup']['mxs'])
+                                lg.info("1st MXS displayed")
                             elif wdata == f"{wt} {ui.st['mu']}":
                                 app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", ui.fw1d['maintgroup']['mu'])
+                                lg.info("1st MS displayed")
                             elif wdata == f"27th {ui.st['fgs']}":
                                 app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", ui.fw1d['maintgroup']['fgs27'])
+                                lg.info("27th FGS displayed")
                             elif wdata == f"94th {ui.st['fgs']}":
                                 app.textbox.delete('1.0', "end")
+                                app.textbox.insert("0.0", ui.fw1d['maintgroup']['fgs94'])
+                                lg.info("94th FGS displayed")
                             elif wdata == 'Return':
                                 app.textbox.delete('1.0', "end")
+                                lg.info("Returning")
                                 return fw1g(x)
                         app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['mt']}", f"{wt} {ui.st['mu']}", f"27th {ui.st['fgs']}", f"94th {ui.st['fgs']}", 'Return'], variable=optionmenu_var2, command=mg1sq)  
                     elif wdata == 'Return':
                         app.textbox.delete('1.0', "end")
+                        lg.info("Returning to Main")
                         return app.back()
                 app.optionmenu.configure(values=["Select a Group...", ' '.join([wt, ui.gt['og']]), ' '.join([wt,ui.gt['mg']]), 'Return'], variable=optionmenu_var1, command=fw1gui)
             fw1g(wt)
