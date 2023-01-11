@@ -2,8 +2,8 @@ import unitterms as ui # For wing, group, and squadron global data
 import logging as lg # For logging
 import logging.handlers # Logging turnover
 import customtkinter # For GUI
-from PIL import Image # Image importing
-import os 
+from PIL import Image # for image importing
+import os # For file system
 
 lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt")], format="%(asctime)s [%(levelname)s] %(message)s") # logging
 should_roll_over = os.path.isfile("unitliblog.txt")
@@ -14,7 +14,7 @@ class App(customtkinter.CTk): # GUI Framework
         super().__init__()
 
         # configure window
-        self.title("15th AF Unit Lib")
+        self.title("USAFUnitLibrary")
         self.geometry(f"{1366}x{768}")
         
         # configure grid layout (4x4)
@@ -27,7 +27,7 @@ class App(customtkinter.CTk): # GUI Framework
         self.sidebar_frame = customtkinter.CTkFrame(self, width=140, corner_radius=0)
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
-        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="15th AF Unit Lib", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="USAFUnitLibrary", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
         self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
@@ -42,6 +42,7 @@ class App(customtkinter.CTk): # GUI Framework
                                                         variable=optionmenu_var)
         self.optionmenu.grid(row=3, column=0, padx=20, pady=(20, 10))
 
+        #Images   
         self.image_frame = customtkinter.CTkFrame(self,corner_radius=10)
         self.image_frame.grid(column=3, row=0, rowspan = 3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky='nsew')
         self.image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets\\img_assets\\")
@@ -50,7 +51,7 @@ class App(customtkinter.CTk): # GUI Framework
         self.image_display.grid(column=3, row=0, rowspan = 3, columnspan=1, sticky='nsew')
         
         # Description
-        self.textbox = customtkinter.CTkTextbox(self, font=('Arial', 15), wrap='word')
+        self.textbox = customtkinter.CTkTextbox(self, font=('Arial', 14), wrap='word')
         self.textbox.grid(row=0, column=1, columnspan=2, rowspan=4, padx=(20, 2.5), pady=(20, 20), sticky="nsew")
         self.textbox2 = customtkinter.CTkTextbox(self, corner_radius=10)
         self.textbox2.grid(row=3, rowspan=1, column=3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky="nsew")
@@ -88,7 +89,7 @@ class App(customtkinter.CTk): # GUI Framework
     def wing_desc(title, wing):
             app.textbox.delete('1.0', "end")
             app.textbox.insert("0.0", f"{ui.af15w[title]}\n\n" + wing['wing'])
-            
+
     def goback():
         app.textbox.delete('1.0', "end")
         lg.info("Returning to Main")
