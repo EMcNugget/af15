@@ -91,56 +91,6 @@ class App(customtkinter.CTk): # GUI Framework
             app.textbox.insert("0.0", f"{ui.af15w[title]}\n\n" + wing['wing'])
     
     def c2main(wdata):
-        class group: # Group Methods
-            @staticmethod
-            def opGroup(uid):
-                if uid == wt:
-                    return f"{wt} {ui.gt['og']}"
-                else: 
-                    return f"{uid} {ui.gt['og']}"
-            @staticmethod
-            def mgGroup(uid):
-                if uid == wt:
-                    return f"{wt} {ui.gt['mg']}"
-                else: 
-                    return f"{uid} {ui.gt['mg']}"
-            @staticmethod 
-            def megGroup(uid):
-                if uid == wt:
-                    return f"{wt} {ui.gt['meg']}"
-                else: 
-                    return f"{uid} {ui.gt['meg']}"
-            @staticmethod
-            def msgGroup(uid):
-                if uid == wt:
-                    return f"{wt} {ui.gt['msg']}"
-                else: 
-                    return f"{uid} {ui.gt['msg']}"
-            @staticmethod
-            def fgGroup(uid):
-                if uid == wt:
-                    return f"{wt} {ui.gt['fg']}"
-                else: 
-                    return f"{uid} {ui.gt['fg']}"
-            @staticmethod 
-            def rgGroup(uid):
-                if uid == wt:
-                    return f"{wt} {ui.gt['rg']}"
-                else: 
-                    return f"{uid} {ui.gt['rg']}"
-            @staticmethod
-            def bdsGroup(uid):
-                if uid == wt:
-                    return f"{wt} {ui.gt['bds']}"
-                else: 
-                    return f"{uid} {ui.gt['bds']}"
-            @staticmethod
-            def asogGroup(uid):
-                if uid == wt:
-                    return f"{wt} {ui.gt['asog']}"
-                else: 
-                    return f"{uid} {ui.gt['asog']}"
-        
         if wdata == ui.af15w['fw1']: #1st Fighter Wing
             wt = "1st"
             App.wing_desc('fw1', ui.fw1d)
