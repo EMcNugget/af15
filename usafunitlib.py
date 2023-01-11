@@ -38,7 +38,7 @@ class App(customtkinter.CTk): # GUI Framework
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 10))
         self.appearance_mode_optionemenu.set("Dark")
         optionmenu_var = customtkinter.StringVar(value="Select a Wing...")
-        self.optionmenu = customtkinter.CTkOptionMenu(self.sidebar_frame, dynamic_resizing=False,
+        self.optionmenu = customtkinter.CTkOptionMenu(self.sidebar_frame, dynamic_resizing=True,
                                                         values=["Select a Wing...", f"{ui.af15w['fw1']}", f"{ui.af15w['fw4']}", f"{ui.af15w['fw20']}", f"{ui.af15w['w23']}", f"{ui.af15w['agow93']}", f"{ui.af15w['fw325']}", f"{ui.af15w['fw366']}", f"{ui.af15w['fw388']}", f"{ui.af15w['w432']}", f"{ui.af15w['acw461']}", f"{ui.af15w['fg495']}", f"{ui.af15w['acw552']}", f"{ui.af15w['abw633']}"], 
                                                         command=App.c2main,
                                                         variable=optionmenu_var)
