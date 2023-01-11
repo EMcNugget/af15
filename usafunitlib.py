@@ -43,7 +43,6 @@ class App(customtkinter.CTk): # GUI Framework
                                                         variable=optionmenu_var)
         self.optionmenu.grid(row=3, column=0, padx=20, pady=(20, 10))
 
-        # Image structure // reserved for later dev
         self.image_frame = customtkinter.CTkFrame(self,corner_radius=10)
         self.image_frame.grid(column=3, row=0, rowspan = 3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky='nsew')
         self.image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets\\img_assets\\")
@@ -91,7 +90,7 @@ class App(customtkinter.CTk): # GUI Framework
             app.textbox.insert("0.0", f"{ui.af15w[title]}\n\n" + wing['wing'])
     
     def c2main(wdata):
-        if wdata == ui.af15w['fw1']: #1st Fighter Wing
+        if wdata == ui.af15w['fw1']: 
             wt = "1st"
             App.wing_desc('fw1', ui.fw1d)
             App.image_load('fw1st')
@@ -99,7 +98,7 @@ class App(customtkinter.CTk): # GUI Framework
                 optionmenu_var1 = customtkinter.StringVar(value="Select a Group")
                 optionmenu_var2 = customtkinter.StringVar(value="Select a Squadron")
                 def fw1gui(wdata):
-                    if wdata == ' '.join([wt, ui.gt['og']]):
+                    if wdata == ' '.join([wt, ui.gt['og']]): # 1st Op Group
                         App.insert_desc(f"{wt} {ui.gt['og']}", ui.fw1d, 'opgroup', 'opsg')
                         App.image_load('opg1st')
                         lg.info("1stOpGroup options and assets displayed")
@@ -131,7 +130,7 @@ class App(customtkinter.CTk): # GUI Framework
                                 lg.info("Returning")
                                 return fw1g(x)
                         app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['oss']}", f"27th {ui.st['fs']}", f"94th {ui.st['fs']}", f"7th {ui.st['ts']}", f"71st {ui.st['fts']}", 'Return'], variable=optionmenu_var2, command=og1sq)
-                    elif wdata == ' '.join([wt,ui.gt['mg']]):
+                    elif wdata == ' '.join([wt,ui.gt['mg']]): # 1st Maint Group
                         App.insert_desc(f"{wt} {ui.gt['mg']}" ,ui.fw1d, 'maintgroup', 'maintg')
                         App.image_load('mxg1st')
                         lg.info("1stMaintGroup units and assets displayed")
@@ -165,13 +164,13 @@ class App(customtkinter.CTk): # GUI Framework
                         return app.back()
                 app.optionmenu.configure(values=["Select a Group...", ' '.join([wt, ui.gt['og']]), ' '.join([wt,ui.gt['mg']]), 'Return'], variable=optionmenu_var1, command=fw1gui)
             fw1g(wt)
-        elif wdata == ui.af15w['fw4']: # 4th Fighter Wing
+        elif wdata == ui.af15w['fw4']: 
             pass
-        elif wdata == ui.af15w['fw20']: # 20th Fighter Wing
+        elif wdata == ui.af15w['fw20']: 
             pass
-        elif wdata == ui.af15w['w23']: # 23d Wing
+        elif wdata == ui.af15w['w23']: 
             pass
-        elif wdata == ui.af15w["agow93"]:
+        elif wdata == ui.af15w["agow93"]: 
             pass
         elif wdata == ui.af15w["fw325"]:
             pass
