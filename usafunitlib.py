@@ -10,12 +10,14 @@ should_roll_over = os.path.isfile("unitliblog.txt")
 handler = logging.handlers.RotatingFileHandler("unitliblog.txt", mode='w', backupCount=5)
 
 class App(customtkinter.CTk): # GUI Framework 
+    width=1200
+    height=675
     def __init__(self):
         super().__init__()
 
         # configure window
         self.title("USAFUnitLibrary")
-        self.geometry(f"{1366}x{768}")
+        self.geometry(f"{self.width}x{self.height}")
         
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
@@ -43,12 +45,12 @@ class App(customtkinter.CTk): # GUI Framework
         self.optionmenu.grid(row=3, column=0, padx=20, pady=(20, 10))
 
         #Images   
-        self.image_frame = customtkinter.CTkFrame(self,corner_radius=10)
+        self.image_frame = customtkinter.CTkFrame(self, corner_radius=10, height=285, width=280)
         self.image_frame.grid(column=3, row=0, rowspan = 3, columnspan=1, padx=(20, 20), pady=(20, 20), sticky='nsew')
         self.image_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets\\img_assets\\")
         self.af15 = customtkinter.CTkImage(Image.open(os.path.join(self.image_path, "af15.png")), size=(285, 280))
-        self.image_display = customtkinter.CTkLabel(master=self, image=self.af15, text="")
-        self.image_display.grid(column=3, row=0, rowspan = 3, columnspan=1, sticky='nsew')
+        self.image_display = customtkinter.CTkLabel(master=self.image_frame, image=self.af15, text="")
+        self.image_display.place(relx=0.5, rely=0.5, anchor='center')
         
         # Description
         self.textbox = customtkinter.CTkTextbox(self, font=('Arial', 14), wrap='word')
@@ -59,6 +61,7 @@ class App(customtkinter.CTk): # GUI Framework
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
             customtkinter.set_appearance_mode(new_appearance_mode)
+
     def back(self):
         optionmenu_var = customtkinter.StringVar(value="Select a Wing...")
         self.optionmenu = customtkinter.CTkOptionMenu(self.sidebar_frame, dynamic_resizing=False,
@@ -69,17 +72,13 @@ class App(customtkinter.CTk): # GUI Framework
         self.textbox.delete('1.0', "end")
         self.textbox.insert("0.0", "15th Air Force\n\n" + ui.af15['af15desc'])
         self.af15 = customtkinter.CTkImage(Image.open(os.path.join(app.image_path, "af15.png")), size=(285, 280))
-        self.image_display = customtkinter.CTkLabel(master=self, image=self.af15, text="")
-        self.image_display.grid(column=3, row=0, rowspan = 3, columnspan=1, sticky='nsew')
-
-    def change_scaling_event(self, new_scaling: str):
-        new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        customtkinter.set_widget_scaling(new_scaling_float)
+        self.image_display = customtkinter.CTkLabel(master=self.image_frame, image=self.af15, text="")
+        self.image_display.place(relx=0.5, rely=0.5, anchor='center')
         
     def image_load(patch):
             App.patch = customtkinter.CTkImage(Image.open(os.path.join(app.image_path, f"{patch}.png")), size=(285, 280))
-            app.image_display = customtkinter.CTkLabel(master=app, image=app.patch, text="")
-            app.image_display.grid(column=3, row=0, rowspan = 3, columnspan=1, sticky='nsew')
+            app.image_display = customtkinter.CTkLabel(master=app.image_frame, image=app.patch, text="")
+            app.image_display.place(relx=0.5, rely=0.5, anchor='center')
             
     def insert_desc(unit, maindict, sub2dict, sub3dict):
         app.textbox.delete('1.0', "end")
@@ -110,13 +109,13 @@ class App(customtkinter.CTk): # GUI Framework
                         def og1sq(wdata):
                             if wdata == f"{wt} {ui.st['oss']}":
                                 App.insert_desc(f"{wt} {ui.st['oss']}", ui.fw1d, 'opgroup', 'oss1')
-                                App.image_load('blank')
+                                App.image_load('oss1st')
                             elif wdata == f"27th {ui.st['fs']}":
                                 App.insert_desc(f"27th {ui.st['fs']}", ui.fw1d, 'opgroup', 'fs27')
-                                App.image_load('blank')
+                                App.image_load('fs27th')
                             elif wdata == f"94th {ui.st['fs']}":
                                 App.insert_desc(f"94th {ui.st['fs']}", ui.fw1d, 'opgroup', 'fs94')
-                                App.image_load('blank')
+                                App.image_load('fs94th')
                             elif wdata == f"7th {ui.st['ts']}":
                                 App.insert_desc(f"7th {ui.st['ts']}", ui.fw1d, 'opgroup', 'ts7')
                                 App.image_load('blank')
@@ -183,5 +182,8 @@ class App(customtkinter.CTk): # GUI Framework
             pass
 if __name__ == "__main__":
     app = App()
-    app.iconbitmap("af15icon.ico")
+    app.iconbitmap (r"C:\Users\seyse\Desktop\af15\af15icon.ico")
     app.mainloop()
+
+    # (r"C:\Users\seyse\Desktop\af15\af15icon.ico") for bundling at school
+    
