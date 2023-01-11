@@ -38,7 +38,7 @@ class App(customtkinter.CTk): # GUI Framework
         self.appearance_mode_optionemenu.set("Dark")
         optionmenu_var = customtkinter.StringVar(value="Select a Wing...")
         self.optionmenu = customtkinter.CTkOptionMenu(self.sidebar_frame, dynamic_resizing=False,
-                                                        values=["Select a Wing...", f"{ui.af15w['fw1']}", f"{ui.af15w['fw4']}", f"{ui.af15w['fw20']}", f"{ui.af15w['w23']}"], 
+                                                        values=["Select a Wing...", f"{ui.af15w['fw1']}", f"{ui.af15w['fw4']}", f"{ui.af15w['fw20']}", f"{ui.af15w['w23']}", f"{ui.af15w['agow93']}", f"{ui.af15w['fw325']}", f"{ui.af15w['fw366']}", f"{ui.af15w['fw388']}", f"{ui.af15w['w432']}", f"{ui.af15w['acw461']}", f"{ui.af15w['fg495']}", f"{ui.af15w['acw552']}", f"{ui.af15w['abw633']}"], 
                                                         command=App.c2main,
                                                         variable=optionmenu_var)
         self.optionmenu.grid(row=3, column=0, padx=20, pady=(20, 10))
@@ -63,7 +63,7 @@ class App(customtkinter.CTk): # GUI Framework
     def back(self):
         optionmenu_var = customtkinter.StringVar(value="Select a Wing...")
         self.optionmenu = customtkinter.CTkOptionMenu(self.sidebar_frame, dynamic_resizing=False,
-                                                        values=["Select a Wing...", f"{ui.af15w['fw1']}", f"{ui.af15w['fw4']}", f"{ui.af15w['fw20']}", f"{ui.af15w['w23']}"], 
+                                                        values=["Select a Wing...", f"{ui.af15w['fw1']}", f"{ui.af15w['fw4']}", f"{ui.af15w['fw20']}", f"{ui.af15w['w23']}", f"{ui.af15w['agow93']}", f"{ui.af15w['fw325']}", f"{ui.af15w['fw366']}", f"{ui.af15w['fw388']}", f"{ui.af15w['w432']}", f"{ui.af15w['acw461']}", f"{ui.af15w['fg495']}", f"{ui.af15w['acw552']}", f"{ui.af15w['abw633']}"], 
                                                         command=App.c2main,
                                                         variable=optionmenu_var)
         self.optionmenu.grid(row=3, column=0, padx=20, pady=(20, 10))
@@ -155,7 +155,7 @@ class App(customtkinter.CTk): # GUI Framework
                             elif wdata == 'Return':
                                 app.textbox.delete('1.0', "end")
                                 App.image_load('fw1st')
-                                app.textbox.insert("0.0", f"{ui.af15w['fw1']}\n\n" + ui.fw1d['wing'])
+                                App.wing_desc('fw1', ui.fw1d)
                                 lg.info("Returning")
                                 return fw1g(x)
                         app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['mt']}", f"{wt} {ui.st['mu']}", f"27th {ui.st['fgs']}", f"94th {ui.st['fgs']}", 'Return'], variable=optionmenu_var2, command=mg1sq)  
@@ -170,6 +170,24 @@ class App(customtkinter.CTk): # GUI Framework
         elif wdata == ui.af15w['fw20']: # 20th Fighter Wing
             pass
         elif wdata == ui.af15w['w23']: # 23d Wing
+            pass
+        elif wdata == ui.af15w["agow93"]:
+            pass
+        elif wdata == ui.af15w["fw325"]:
+            pass
+        elif wdata == ui.af15w["fw366"]:
+            pass
+        elif wdata == ui.af15w["fw388"]:
+            pass
+        elif wdata == ui.af15w["w432"]:
+            pass
+        elif wdata == ui.af15w["acw461"]:
+            pass
+        elif wdata == ui.af15w["fg495"]:
+            pass
+        elif wdata == ui.af15w["acw552"]:
+            pass
+        elif wdata == ui.af15w["abw633"]:
             pass
 if __name__ == "__main__":
     app = App()
