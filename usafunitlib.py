@@ -88,7 +88,12 @@ class App(customtkinter.CTk): # GUI Framework
     def wing_desc(title, wing):
             app.textbox.delete('1.0', "end")
             app.textbox.insert("0.0", f"{ui.af15w[title]}\n\n" + wing['wing'])
-    
+            
+    def goback():
+        app.textbox.delete('1.0', "end")
+        lg.info("Returning to Main")
+        return app.back()
+
     def c2main(wdata):
         if wdata == ui.af15w['fw1']: 
             wt = "1st"
@@ -148,9 +153,7 @@ class App(customtkinter.CTk): # GUI Framework
                                 return fw1g(x)
                         app.optionmenu.configure(values=["Select a Squadron...", f"{wt} {ui.st['mt']}", f"{wt} {ui.st['mu']}", f"27th {ui.st['fgs']}", f"94th {ui.st['fgs']}", 'Return'], variable=optionmenu_var2, command=mg1sq)  
                     elif wdata == 'Return':
-                        app.textbox.delete('1.0', "end")
-                        lg.info("Returning to Main")
-                        return app.back()
+                        App.goback()
                 app.optionmenu.configure(values=["Select a Group...", ' '.join([wt, ui.gt['og']]), ' '.join([wt,ui.gt['mg']]), 'Return'], variable=optionmenu_var1, command=fw1gui)
             fw1g(wt)
         elif wdata == ui.af15w['fw4']: 
