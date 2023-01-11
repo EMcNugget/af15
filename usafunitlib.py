@@ -1,7 +1,6 @@
 import unitterms as ui # For wing, group, and squadron global data
 import logging as lg # For logging
 import logging.handlers
-import wingdb as wdb # Wing misc data
 import customtkinter # For GUI
 import tkinter # GUI dependency 
 from PIL import Image, ImageTk # Image importing
@@ -139,12 +138,11 @@ class App(customtkinter.CTk): # GUI Framework
                     return f"{uid} {ui.gt['asog']}"
         
         if wdata == ui.af15w['fw1']: #1st Fighter Wing
-            wt = wdb.db1.term
+            wt = "1st"
             app.textbox.delete('1.0', "end")
             app.textbox.insert("0.0", f"{ui.af15w['fw1']}\n\n" + ui.fw1d['wing'])
             App.image_load('fw1st')
             def fw1g(x): # 1st Fighter Wing Units
-                lg.info(f"{wdb.cg(wdata)} {group.opGroup(x)} and the {group.mgGroup(x)}")
                 optionmenu_var1 = customtkinter.StringVar(value="Select a Group")
                 optionmenu_var2 = customtkinter.StringVar(value="Select a Squadron")
                 def fw1gui(wdata):
@@ -215,49 +213,11 @@ class App(customtkinter.CTk): # GUI Framework
                 app.optionmenu.configure(values=["Select a Group...", ' '.join([wt, ui.gt['og']]), ' '.join([wt,ui.gt['mg']]), 'Return'], variable=optionmenu_var1, command=fw1gui)
             fw1g(wt)
         elif wdata == ui.af15w['fw4']: # 4th Fighter Wing
-            wt = wdb.db4.term
-            def fw4g(x): # 4th Fighter Wing Units
-                lg.info(f"{wdb.cg(wdata)} {group.opGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, and the {group.mgGroup(x)}")
-                userInput = input(wdb.gs(wdata))
-                if userInput == ' '.join([wt, ui.gt['og']]):
-                    lg.info(f"{wdb.cs(wdata)} {wt} {ui.st['oss']}, 333d, 334th, 335th, 336th {ui.st['fs']}s and the {wt} {ui.st['ts']}")
-                elif userInput == ' '.join([wt, ui.gt['msg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['cts']}, {wt} {ui.st['fss']}, {wt} {ui.st['lrs']}, and the {wt} {ui.st['sfs']}")
-                elif userInput == ' '.join([wt, ui.gt['meg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['hos']} and the {wt} {ui.st['omrs']}")
-                elif userInput == ' '.join([wt, ui.gt['mg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['amxs']}, {wt} {ui.st['ems']}, {wt} {ui.st['cms']}, and the 333d, 334th, 335th, 336th {ui.st['fgs']}s ")
-            fw4g(wt)
+            pass
         elif wdata == ui.af15w['fw20']: # 20th Fighter Wing
-            wt = wdb.db20.term
-            def fw20g(x):    # 20th Fighter Wing Units
-                lg.info(f"{wdb.cg(wdata)} {group.opGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, and the {group.mgGroup(x)}")
-                userInput = input(wdb.gs(wdata))
-                if userInput == ' '.join([wt, ui.gt['og']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, and the 55th, 77th, 79th, {ui.st['fs']}s")
-                elif userInput == ' '.join([wt, ui.gt['msg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['fss']}, {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['sfs']}, {wt} {ui.st['lrs']}, and the {wt} {ui.st['cts']}")
-                elif userInput == ' '.join([wt, ui.gt['meg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['hos']} and the {wt} {ui.st['omrs']}")
-                elif userInput == ' '.join([wt, ui.gt['mg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['cms']} and the {wt} {ui.st['ems']}")
-            fw20g(wt)
+            pass
         elif wdata == ui.af15w['w23']: # 23d Wing
-            wt = wdb.db23.term
-            def w23g(x): #23d Wing Units
-                lg.info(f"{wdb.cg(wdata)} {group.fgGroup(x)}, {group.msgGroup(x)}, {group.megGroup(x)}, {group.mgGroup(x)}, and the {group.rgGroup('347th')}")
-                userInput = input(wdb.gs(wdata))
-                if userInput == ' '.join([wt, ui.gt['fg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['oss']}, 74th, 75th {ui.st['fs']}s")
-                elif userInput == ' '.join([wt, ui.gt['msg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['ces']}, {wt} {ui.st['cs']}, {wt} {ui.st['cts']}, {wt} {ui.st['lrs']}, {wt} {ui.st['fss']}, and the {wt} {ui.st['sfs']}")
-                elif userInput == ' '.join([wt, ui.gt['meg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['mss']}, {wt} {ui.st['hos']}, and the {wt} {ui.st['omrs']}")
-                elif userInput == ' '.join([wt, ui.gt['mg']]):
-                    lg.info(f"{wdb.cs(userInput)} {wt} {ui.st['mof']}, {wt} {ui.st['mu']}, {wt} {ui.st['mt']}, 41st, 71st {ui.st['rgs']}, 74th, and 75th {ui.st['fgs']}")
-                elif userInput == ' '.join(['347th', ui.gt['rg']]):
-                    lg.info(f"{wdb.cs(userInput)} 347th {ui.st['oss']}, and the 38th, 41st, and 71st {ui.st['rs']}s")
-            w23g(wt)
+            pass
 if __name__ == "__main__":
     app = App()
     app.iconbitmap("af15icon.ico")
