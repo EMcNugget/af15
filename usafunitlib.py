@@ -85,6 +85,10 @@ class App(customtkinter.CTk): # GUI Framework
     def insert_desc(unit, maindict, sub2dict, sub3dict):
         app.textbox.delete('1.0', "end")
         app.textbox.insert("0.0", f"{unit}\n\n" + maindict[sub2dict][sub3dict])
+
+    def wing_desc(title, wing):
+            app.textbox.delete('1.0', "end")
+            app.textbox.insert("0.0", f"{ui.af15w[title]}\n\n" + wing['wing'])
     
     def c2main(wdata):
         class group: # Group Methods
@@ -139,8 +143,7 @@ class App(customtkinter.CTk): # GUI Framework
         
         if wdata == ui.af15w['fw1']: #1st Fighter Wing
             wt = "1st"
-            app.textbox.delete('1.0', "end")
-            app.textbox.insert("0.0", f"{ui.af15w['fw1']}\n\n" + ui.fw1d['wing'])
+            App.wing_desc('fw1', ui.fw1d)
             App.image_load('fw1st')
             def fw1g(x): # 1st Fighter Wing Units
                 optionmenu_var1 = customtkinter.StringVar(value="Select a Group")
