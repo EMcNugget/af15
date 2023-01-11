@@ -1,9 +1,8 @@
 import unitterms as ui # For wing, group, and squadron global data
 import logging as lg # For logging
-import logging.handlers
+import logging.handlers # Logging turnover
 import customtkinter # For GUI
-import tkinter # GUI dependency 
-from PIL import Image, ImageTk # Image importing
+from PIL import Image # Image importing
 import os 
 
 lg.basicConfig(level=lg.DEBUG, handlers=[lg.FileHandler("unitliblog.txt")], format="%(asctime)s [%(levelname)s] %(message)s") # logging
@@ -84,6 +83,7 @@ class App(customtkinter.CTk): # GUI Framework
     def insert_desc(unit, maindict, sub2dict, sub3dict):
         app.textbox.delete('1.0', "end")
         app.textbox.insert("0.0", f"{unit}\n\n" + maindict[sub2dict][sub3dict])
+        lg.info(f"{unit} options and assets displayed")
 
     def wing_desc(title, wing):
             app.textbox.delete('1.0', "end")
@@ -101,28 +101,22 @@ class App(customtkinter.CTk): # GUI Framework
                     if wdata == ' '.join([wt, ui.gt['og']]): # 1st Op Group
                         App.insert_desc(f"{wt} {ui.gt['og']}", ui.fw1d, 'opgroup', 'opsg')
                         App.image_load('opg1st')
-                        lg.info("1stOpGroup options and assets displayed")
                         def og1sq(wdata):
                             if wdata == f"{wt} {ui.st['oss']}":
                                 App.insert_desc(f"{wt} {ui.st['oss']}", ui.fw1d, 'opgroup', 'oss1')
                                 App.image_load('blank')
-                                lg.info("1st OSS displayed")
                             elif wdata == f"27th {ui.st['fs']}":
                                 App.insert_desc(f"27th {ui.st['fs']}", ui.fw1d, 'opgroup', 'fs27')
                                 App.image_load('blank')
-                                lg.info("27th FS displayed")
                             elif wdata == f"94th {ui.st['fs']}":
                                 App.insert_desc(f"94th {ui.st['fs']}", ui.fw1d, 'opgroup', 'fs94')
                                 App.image_load('blank')
-                                lg.info("94th FS displayed")
                             elif wdata == f"7th {ui.st['ts']}":
                                 App.insert_desc(f"7th {ui.st['ts']}", ui.fw1d, 'opgroup', 'ts7')
                                 App.image_load('blank')
-                                lg.info("7th TS displayed")
                             elif wdata == f"71st {ui.st['fts']}":
                                 App.insert_desc(f"71st {ui.st['fts']}", ui.fw1d, 'opgroup', 'fts71')
                                 App.image_load('blank')
-                                lg.info("71st FTS displayed")
                             elif wdata == 'Return':
                                 app.textbox.delete('1.0', "end")
                                 App.image_load('fw1st')
@@ -133,24 +127,19 @@ class App(customtkinter.CTk): # GUI Framework
                     elif wdata == ' '.join([wt,ui.gt['mg']]): # 1st Maint Group
                         App.insert_desc(f"{wt} {ui.gt['mg']}" ,ui.fw1d, 'maintgroup', 'maintg')
                         App.image_load('mxg1st')
-                        lg.info("1stMaintGroup units and assets displayed")
                         def mg1sq(wdata):
                             if wdata == f"{wt} {ui.st['mt']}":
                                 App.insert_desc(f"{wt} {ui.st['mt']}", ui.fw1d, 'maintgroup', 'mxs1')
                                 App.image_load('blank')
-                                lg.info("1st MXS displayed")
                             elif wdata == f"{wt} {ui.st['mu']}":
                                 App.insert_desc(f"{wt} {ui.st['mu']}", ui.fw1d, 'maintgroup', 'mu1')
                                 App.image_load('blank')
-                                lg.info("1st MS displayed")
                             elif wdata == f"27th {ui.st['fgs']}":
                                 App.insert_desc(f"27th {ui.st['fgs']}", ui.fw1d, 'maintgroup', 'fgs27')
                                 App.image_load('blank')
-                                lg.info("27th FGS displayed")
                             elif wdata == f"94th {ui.st['fgs']}":
                                 App.insert_desc(f"94th {ui.st['fgs']}", ui.fw1d, 'maintgroup', 'fgs94')
                                 App.image_load('blank')
-                                lg.info("94th FGS displayed")
                             elif wdata == 'Return':
                                 app.textbox.delete('1.0', "end")
                                 App.image_load('fw1st')
